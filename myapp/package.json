@@ -1,0 +1,35 @@
+{
+  "name": "myapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "angular": "^1.7.8",
+    "bootstrap": "^4.3.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^2.7.1",
+    "express": "^4.16.4",
+    "finalhandler": "^1.1.2",
+    "http-errors": "^1.6.3",
+    "jade": "~1.11.0",
+    "jquery": "^3.4.1",
+    "morgan": "~1.9.1",
+    "mysql": "^2.17.1",
+    "path": "^0.12.7",
+    "querystring": "^0.2.0",
+    "room": "0.0.4",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  },
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
