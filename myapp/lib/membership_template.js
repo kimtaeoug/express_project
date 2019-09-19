@@ -4,6 +4,7 @@ module.exports={
    <html>
    <head>
    <link rel="stylesheet" href="../stylesheets/membership.css">
+   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
    <head>
    <body>
    <div class="login-wrap">
@@ -28,6 +29,10 @@ module.exports={
 				<div class="hr"></div>
 				<div class="foot-lnk">
 				</form>
+				</div>
+				<div>
+				<a id="kakao-login-btn" style="margin-left:20%;"></a>
+					<a href="http://developers.kakao.com/logout"></a>
 				</div>
 				<div>
 				<a href="/">Go Main</a>
@@ -65,6 +70,38 @@ module.exports={
 	</div>
 </div>
 </div>
+<script type='text/javascript'>
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('77fd161acf1ad99c32300ce6ea8cda0b');
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+container: '#kakao-login-btn',
+success: function(authObj) {
+  Kakao.API.request({
+    url: '/v1/user/me',
+    success: function(res) {
+		$.ajax({
+			url:"/session",
+			type:"post",
+			dataType:"json",
+			data:"res"+res,
+			//res안에 kakao에서 받아온 데이터가 json형태로 들어있음
+			//ex)res.id는 id값, res.kaccount_email은 email정보,res.properties['nickname']은 닉네임
+			success:function(data){
+				console.log(data);			
+			},
+			error:function(request, status, error){
+				console.log(error);
+			}
+		})
+        }
+      })
+    },
+    fail: function(error) {
+      alert(JSON.stringify(error));
+    }
+  });
+</script>
 </body>
 </html>
     `
